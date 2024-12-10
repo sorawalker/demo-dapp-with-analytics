@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import ReactJson from 'react-json-view';
 import './style.scss';
 import {SendTransactionRequest, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
+import { actionAdditionalEvent } from "../../analytics-events/additional-task.events";
 
 // In this example, we are using a predefined smart contract state initialization (`stateInit`)
 // to interact with an "EchoContract". This contract is designed to send the value back to the sender,
@@ -45,13 +46,20 @@ export function TxForm() {
 		<div className="send-tx-form">
 			<h3>Configure and send transaction</h3>
 			<ReactJson src={defaultTx} theme="ocean" onEdit={onChange} onAdd={onChange} onDelete={onChange} />
-			{wallet ? (
-				<button onClick={() => tonConnectUi.sendTransaction(tx)}>
-					Send transaction
-				</button>
-			) : (
-				<button onClick={() => tonConnectUi.openModal()}>Connect wallet to send the transaction</button>
-			)}
+			<>
+				{wallet ? (
+					<button onClick={() => tonConnectUi.sendTransaction(tx)}>
+						Send transaction
+					</button>
+				) : (
+					<button onClick={() => tonConnectUi.openModal()}>Connect wallet to send the transaction</button>
+				)}
+				{actionAdditionalEvent ? (
+					<button onClick={() => window.dispatchEvent(actionAdditionalEvent as Event)}>
+						Send action additional task
+					</button>
+				) : console.error(`Action task ID is undefined`)}
+			</>
 		</div>
 	);
 }
