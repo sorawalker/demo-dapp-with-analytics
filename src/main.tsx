@@ -11,6 +11,7 @@ import TelegramAnalytics from '@telegram-apps/analytics'
 TelegramAnalytics.init({
     appName: 'developerTest',
     token: 'eyJhcHBfbmFtZSI6ImRldmVsb3BlclRlc3QiLCJhcHBfdXJsIjoiaHR0cHMvL3QubWUvQm90RmF0aGVyIiwiYXBwX2RvbWFpbiI6Imh0dHBzOi8vdGdhbmFseXRpY3MueHl6In0=!IvfqLr4Z8W8rwExUqUzkOW2Nzy9aeCf2cNAhbFTWLFI=',
+    env: 'STG',
 });
 
 if (AdditionalTaskEvents.initAdditionalEvent !== undefined) {
