@@ -4,6 +4,7 @@ import './style.scss';
 import {SendTransactionRequest, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
 import { actionAdditionalEvent } from "../../analytics-events/additional-task.events";
 import { generateInvoice } from "../../utils/generateInvoice";
+import {checkPendingPayments, intervalCallback} from "../../utils/checkPendingPayments";
 
 // In this example, we are using a predefined smart contract state initialization (`stateInit`)
 // to interact with an "EchoContract". This contract is designed to send the value back to the sender,
@@ -40,6 +41,7 @@ export function TxForm() {
 	const [tx, setTx] = useState(defaultTx);
 	const wallet = useTonWallet();
 	const [tonConnectUi] = useTonConnectUI();
+	const [intervalId, setIntervalId] = useState(0);
 
 	const onChange = useCallback((value: object) => setTx((value as { updated_src: typeof defaultTx }).updated_src), []);
 
@@ -61,7 +63,15 @@ export function TxForm() {
 					</button>
 				) : console.error(`Action task ID is undefined`)}
 				{window.localStorage.getItem('BOT_TOKEN') ? (
-					<button onClick={async () => window.Telegram.WebApp.openInvoice(await generateInvoice(window.localStorage.getItem('BOT_TOKEN') as string))}>
+					<button onClick={async () => {
+						if (intervalId === 0) {
+							const intervalId = setInterval(intervalCallback, 5000);
+
+							setIntervalId(intervalId);
+						}
+
+						window.Telegram.WebApp.openInvoice(await generateInvoice(window.localStorage.getItem('BOT_TOKEN') as string))
+					}}>
 						Generate and open invoice
 					</button>
 				) : console.error(`Action task ID is undefined`)}
