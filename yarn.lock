@@ -256,10 +256,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@telegram-apps/analytics@^1.3.12-beta.8":
-  version "1.3.12"
-  resolved "https://registry.npmjs.org/@telegram-apps/analytics/-/analytics-1.3.12.tgz"
-  integrity sha512-tOvXqn855XHtWdOTJrmPjoIqDy7GmYJnZu05WuKM/oPn3VJTJ+bR1Qs34eT9O+m1rwUdpyz/opjRvorEEsc4pQ==
+"@telegram-apps/analytics@^1.3.14-stars":
+  version "1.3.14-stars"
+  resolved "https://registry.npmjs.org/@telegram-apps/analytics/-/analytics-1.3.14-stars.tgz"
+  integrity sha512-0vGfjfO1IwUm6bvPWhHoD+UcxAZe9SELGWN7Dc9yT0a1IfgzaxF+nMtYw34sdN5ZEBzJVx4K1on1NglywNC5EQ==
   dependencies:
     "@telegram-apps/sdk" "^1.1.0"
     "@tonconnect/ui" "2.0.5"
@@ -1159,6 +1159,15 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
+
+test-analytics123@^1.3.18:
+  version "1.3.18"
+  resolved "https://registry.npmjs.org/test-analytics123/-/test-analytics123-1.3.18.tgz"
+  integrity sha512-68iGCQ6coCfQ37gnz9NLNuzrE0/hc9aAPFDRvuddtfVFy+jNMurZRSNeQ5iIU0tPmaZU9yG3gOMDeH7D2ij1Ww==
+  dependencies:
+    "@telegram-apps/sdk" "^1.1.0"
+    "@tonconnect/ui" "2.0.5"
+    http-server "14.1.1"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
